@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>菜单访问键过滤器</title>
+</head>
+<body>
+<h1>菜单访问键过滤器</h1>
+<p><a href="https://github.com/nvaccess/nvda/issues/20912">NVDA issue #20912</a> 的原型插件。</p>
+
+<h2>功能</h2>
+<p>中文、日文、韩文应用的菜单经常把菜单项标签里的某个字符当作访问键提供出来，NVDA 便会在标签之后把它再读一遍，例如：</p>
+<ul>
+<li>Internet Download Manager：<code>任务 子菜单 Alt+任</code></li>
+<li>Bookworm：<code>打开... Ctrl+O 打</code></li>
+</ul>
+<p>菜单访问键必须用一次按键键入，而汉字、假名和谚文只能通过输入法输入。本插件会把菜单项、菜单和弹出菜单上这类无法键入的访问键去掉。安装后，上面两个例子分别读作 <code>任务 子菜单</code> 和 <code>打开... Ctrl+O</code>。</p>
+
+<h2>保留的内容</h2>
+<ul>
+<li><code>Ctrl+O</code> 之类的加速键。</li>
+<li>拉丁字母访问键，包括同时出现在标签里的（NVDA 菜单里的 <code>t</code>、<code>a</code>），以及中日韩菜单常用的括号内拉丁字母，如 <code>文件(&amp;F)</code>。</li>
+<li>可以直接用键盘布局键入的文字的访问键，如西里尔、希腊、阿拉伯、希伯来、泰文和天城文。</li>
+</ul>
+<p>只有“单个仅能通过输入法输入的字符，前面可带修饰键”的快捷键（<code>打</code>、<code>Alt+任</code>）会被移除。</p>
+
+<h2>作用范围</h2>
+<p>过滤作用于菜单相关对象的 NVDA <code>keyboardShortcut</code> 属性，因此语音、盲文，以及报告当前对象快捷键的命令（NVDA+Ctrl+Shift+. 或 Shift+小键盘 2）都会生效。过滤叠加在该属性的 MSAA 和 UIA 两种实现之上。</p>
+
+<h2>对比过滤前后</h2>
+<p>在“输入手势”对话框的“菜单访问键过滤器”类别中，有一个“切换是否移除无法键入的菜单访问键，例如汉字”命令，默认没有手势，可自行指定。设置不会保存，每次重启 NVDA 后过滤都是开启的。</p>
+
+<h2>反馈测试结果</h2>
+<p>把 NVDA 的日志级别设为“调试”后，每次移除都会写入日志，例如：</p>
+<pre>Removed unusable access key(s) ['打'] from shortcut '打' of &lt;Role.MENUITEM&gt; named '打开...\tCtrl+O'</pre>
+<p>请反馈应用名称、界面语言和这行日志，尤其是实际能键入的访问键被误删，或无法键入的访问键仍被朗读的情况。</p>
+
+<h2>系统要求</h2>
+<p>NVDA 2026.1 或更高版本。</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: menuAccessKeyFilter 0.1.0\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Translators: The name of the category in the Input gestures dialog for this add-on's commands.
+msgid "Menu access key filter"
+msgstr "菜单访问键过滤器"
+
+#. Translators: The description of the command that toggles the filtering of unusable menu access keys.
+msgid "Toggles the removal of menu access keys that cannot be typed, such as Chinese characters"
+msgstr "切换是否移除无法键入的菜单访问键，例如汉字"
+
+#. Translators: Reported when the removal of unusable menu access keys is turned on.
+msgid "Unusable menu access keys hidden"
+msgstr "已隐藏无法键入的菜单访问键"
+
+#. Translators: Reported when the removal of unusable menu access keys is turned off.
+msgid "Unusable menu access keys reported"
+msgstr "将朗读无法键入的菜单访问键"

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu Access Key Filter</title>
+</head>
+<body>
+<h1>Menu Access Key Filter</h1>
+<p>A prototype for <a href="https://github.com/nvaccess/nvda/issues/20912">NVDA issue #20912</a>.</p>
+
+<h2>What it does</h2>
+<p>Menus in Chinese, Japanese and Korean applications often expose a character taken from the item's own label as its access key. NVDA then reads that character again after the label, for example:</p>
+<ul>
+<li>Internet Download Manager: <code>任务 子菜单 Alt+任</code></li>
+<li>Bookworm: <code>打开... Ctrl+O 打</code></li>
+</ul>
+<p>A menu access key has to be typed with one key press, and Han, kana and hangul characters can only be entered through an IME. This add-on removes such unusable access keys from menu items, menus and popup menus. After installing it, the examples above are read as <code>任务 子菜单</code> and <code>打开... Ctrl+O</code>.</p>
+
+<h2>What it keeps</h2>
+<ul>
+<li>Accelerators such as <code>Ctrl+O</code>.</li>
+<li>Latin access keys, including ones that also appear in the label (the <code>t</code> and <code>a</code> in the NVDA menu), and the Latin letters in parentheses that Chinese, Japanese and Korean menus use, such as <code>文件(&amp;F)</code>.</li>
+<li>Access keys written in scripts that can be typed directly on a keyboard layout, such as Cyrillic, Greek, Arabic, Hebrew, Thai and Devanagari.</li>
+</ul>
+<p>Only a shortcut made of a single character from an IME-only script, optionally preceded by modifiers (<code>打</code>, <code>Alt+任</code>), is removed.</p>
+
+<h2>Where it applies</h2>
+<p>The filter changes NVDA's <code>keyboardShortcut</code> property of menu related objects, so it applies to speech, braille and the command that reports the shortcut key of the current object (NVDA+Ctrl+Shift+. or Shift+Numpad 2). The filter sits on top of both the MSAA and the UIA implementation of that property.</p>
+
+<h2>Comparing with and without the filter</h2>
+<p>The command "Toggles the removal of menu access keys that cannot be typed" in the "Menu access key filter" category of the Input gestures dialog has no default gesture. Assign one to switch between the original and the filtered behavior. The setting is not saved: the filter is on after every restart of NVDA.</p>
+
+<h2>Reporting test results</h2>
+<p>With the NVDA log level set to debug, every removed value is logged, for example:</p>
+<pre>Removed unusable access key(s) ['打'] from shortcut '打' of &lt;Role.MENUITEM&gt; named '打开...\tCtrl+O'</pre>
+<p>Please report the application, its language and the log line, especially if an access key you can actually type was removed or an unusable one is still read.</p>
+
+<h2>Requirements</h2>
+<p>NVDA 2026.1 or later.</p>
+</body>
+</html>
