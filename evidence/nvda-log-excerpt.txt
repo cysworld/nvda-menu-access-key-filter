@@ -23,8 +23,14 @@ Internet Download Manager 6.43, Chinese UI, menu bar item 任务
     Removed unusable access key(s) ['Alt+任'] from shortcut 'Alt+任' of <Role.MENUITEM: 11> named '任务'
     IO - speech.speech.speak (11:08:29.669) - MainThread (8752):
     Speaking ['任务', '子菜单', CancellableSpeech (still valid)]
+  filter ON, a Latin access key of a sub menu item is still reported:
+    IO - speech.speech.speak (11:08:30.508) - MainThread (8752):
+    Speaking ['添加任务(N)', 'n', '，11 之 1 项', CancellableSpeech (still valid)]
 
 Bookworm 2026.2, Chinese UI, File menu, item 打开...
+  filter ON, the Latin access key of the menu bar item is still reported:
+    IO - speech.speech.speak (11:08:44.762) - MainThread (8752):
+    Speaking ['文件(F)', '子菜单', 'Alt+f', CancellableSpeech (still valid)]
   filter ON, plugin debug line and speech:
     DEBUG - external:globalPlugins.menuAccessKeyFilter.MenuShortcutOverlay._get_keyboardShortcut (11:08:45.756) - MainThread (8752):
     Removed unusable access key(s) ['打'] from shortcut '打' of <Role.MENUITEM: 11> named '打开... \tCtrl-O'
