@@ -1,0 +1,91 @@
+Menu mnemonic test, tools\menuMnemonicTest.ps1, Windows 11 (10.0.26300), native Win32 menu bar (legacy .NET MainMenu).
+Menu bar items and their explicit mnemonics: &人民 (U+4EBA), &任务 (U+4EFB), &ひらがな, &カタカナ, &한글, &ㄅㄆㄇ, &Tools.
+Installed input methods on this PC: Chinese (Simplified) Microsoft Pinyin and a second Chinese TIP, US English. No Japanese, Korean or Bopomofo IME.
+
+== Run 1: -Auto. Alt is tapped, then one Unicode character is injected with SendInput (KEYEVENTF_UNICODE). No IME involved.
+10:09:12.497  AUTO tap Alt, then inject U+4EFB
+10:09:12.571  WM_INITMENU (menu mode entered)
+10:09:12.814  ACTIVATED: &任务
+10:09:13.321  AUTO RESULT U+4EFB -> activated &任务
+10:09:13.744  AUTO tap Alt, then inject U+3072
+10:09:13.752  WM_INITMENU (menu mode entered)
+10:09:14.059  ACTIVATED: &ひらがな
+10:09:14.565  AUTO RESULT U+3072 -> activated &ひらがな
+10:09:14.989  AUTO tap Alt, then inject U+30AB
+10:09:14.998  WM_INITMENU (menu mode entered)
+10:09:15.307  ACTIVATED: &カタカナ
+10:09:15.805  AUTO RESULT U+30AB -> activated &カタカナ
+10:09:16.226  AUTO tap Alt, then inject U+D55C
+10:09:16.323  WM_INITMENU (menu mode entered)
+10:09:16.542  ACTIVATED: &한글
+10:09:17.051  AUTO RESULT U+D55C -> activated &한글
+10:09:17.472  AUTO tap Alt, then inject U+3105
+10:09:17.480  WM_INITMENU (menu mode entered)
+10:09:17.789  ACTIVATED: &ㄅㄆㄇ
+10:09:18.296  AUTO RESULT U+3105 -> activated &ㄅㄆㄇ
+10:09:18.714  AUTO tap Alt, then inject U+0074
+10:09:18.723  WM_INITMENU (menu mode entered)
+10:09:19.033  ACTIVATED: &Tools
+10:09:19.536  AUTO RESULT U+0074 -> activated &Tools
+10:09:19.959  AUTO tap Alt, then inject U+0078
+10:09:19.968  WM_INITMENU (menu mode entered)
+10:09:20.273  WM_MENUCHAR, no mnemonic matched, char=U+0078
+10:09:20.785  AUTO RESULT U+0078 -> no item activated
+10:09:21.210  AUTO done
+(Run 1 was made before the &人民 item was added.)
+
+Reading: a mnemonic in Han, Hiragana, Katakana, Hangul or Bopomofo is matched and activated when the character
+reaches the active menu. The restriction is therefore on how the character can be delivered, not on the menu.
+
+== Run 2: -AutoIme, layout 00000804 (Chinese Simplified, Microsoft Pinyin). Virtual-key events r e n space are injected.
+10:26:51.840  AUTO-IME keyboard layout now 8040804
+10:26:54.138  AUTO-IME text box check 1: [人] U+4EBA
+10:26:54.146  AUTO-IME tap Alt, then type ren and space through the IME
+10:26:54.162  WM_INITMENU (menu mode entered)
+10:26:54.552  WM_MENUCHAR, no mnemonic matched, char=U+0072
+10:26:56.146  AUTO-IME RESULT B1 (Chinese mode, ren + space) -> no item activated
+10:26:56.565  AUTO-IME B2: tap Alt, then t, IME still in Chinese mode
+10:26:56.573  WM_INITMENU (menu mode entered)
+10:26:56.990  ACTIVATED: &Tools
+10:26:57.681  AUTO-IME RESULT B2 (Chinese mode, t) -> activated &Tools
+10:26:58.626  AUTO-IME B3: Shift pressed to toggle the IME mode, tap Alt, then ren + space
+10:26:58.632  WM_INITMENU (menu mode entered)
+10:26:59.032  WM_MENUCHAR, no mnemonic matched, char=U+0072
+10:27:00.609  AUTO-IME RESULT B3 (English mode, ren + space) -> no item activated
+10:27:01.026  AUTO-IME B3b: tap Alt, then t, IME in the other mode
+10:27:01.035  WM_INITMENU (menu mode entered)
+10:27:01.448  ACTIVATED: &Tools
+10:27:02.136  AUTO-IME RESULT B3b (other mode, t) -> activated &Tools
+10:27:02.858  AUTO-IME done
+
+== Run 3: -AutoIme -Layout 00000409 (US English, no IME). Baseline.
+10:29:29.207  AUTO-IME keyboard layout now 4090409
+10:29:31.507  AUTO-IME text box check 1: [ren ] U+0072 U+0065 U+006E U+0020
+10:29:31.507  AUTO-IME no Han text, toggling Chinese/English mode with Shift
+10:29:33.496  AUTO-IME text box check 2: [ren ] U+0072 U+0065 U+006E U+0020
+10:29:33.501  AUTO-IME tap Alt, then type ren and space through the IME
+10:29:33.512  WM_INITMENU (menu mode entered)
+10:29:33.912  WM_MENUCHAR, no mnemonic matched, char=U+0072
+10:29:35.498  AUTO-IME RESULT B1 (Chinese mode, ren + space) -> no item activated
+10:29:35.913  AUTO-IME B2: tap Alt, then t, IME still in Chinese mode
+10:29:36.008  WM_INITMENU (menu mode entered)
+10:29:36.329  ACTIVATED: &Tools
+10:29:37.016  AUTO-IME RESULT B2 (Chinese mode, t) -> activated &Tools
+10:29:37.949  AUTO-IME B3: Shift pressed to toggle the IME mode, tap Alt, then ren + space
+10:29:37.957  WM_INITMENU (menu mode entered)
+10:29:38.365  WM_MENUCHAR, no mnemonic matched, char=U+0072
+10:29:39.954  AUTO-IME RESULT B3 (English mode, ren + space) -> no item activated
+10:29:40.385  AUTO-IME B3b: tap Alt, then t, IME in the other mode
+10:29:40.392  WM_INITMENU (menu mode entered)
+10:29:40.802  ACTIVATED: &Tools
+10:29:41.499  AUTO-IME RESULT B3b (other mode, t) -> activated &Tools
+10:29:42.228  AUTO-IME done
+
+Reading of runs 2 and 3:
+- With Microsoft Pinyin the IME works in an ordinary text box (ren + space gives U+4EBA) in this window.
+- While the menu bar is active, "ren" reaches the menu as the raw letter r (WM_MENUCHAR U+0072) with no IME composition
+  message. The result is identical to the baseline without an IME (run 3). Windows only reports the first
+  unmatched character, so e and n do not appear in either run.
+- A Latin mnemonic (t) still works with the IME in either mode.
+Limits: virtual-key events injected with SendInput rather than a physical keyboard, one IME (Microsoft Pinyin), one
+menu implementation (native HMENU), one Windows build. Japanese, Korean and Bopomofo IMEs were not available.

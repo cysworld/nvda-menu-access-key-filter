@@ -1,0 +1,46 @@
+Excerpt of nvda.log, only the lines about this test. Log level: debug.
+Starting NVDA version 2026.3rc1 AMD64
+Found add-on menuAccessKeyFilter - 0.1.0. Requires API: (2026, 1, 0). Last-tested API: (2026, 3, 0)
+
+
+Internet Download Manager 6.43, Chinese UI, menu bar item 任务
+  filter ON (state after NVDA start). Plugin debug line and speech:
+    DEBUG - external:globalPlugins.menuAccessKeyFilter.MenuShortcutOverlay._get_keyboardShortcut (11:07:56.016) - MainThread (8752):
+    Removed unusable access key(s) ['Alt+任'] from shortcut 'Alt+任' of <Role.MENUITEM: 11> named '任务'
+    IO - speech.speech.speak (11:07:56.016) - MainThread (8752):
+    Speaking ['任务', '子菜单', CancellableSpeech (still valid)]
+  toggle command pressed, filter OFF:
+    IO - speech.speech.speak (11:08:02.242) - MainThread (8752):
+    Speaking ['将朗读无法键入的菜单访问键']
+  filter OFF, speech:
+    IO - speech.speech.speak (11:08:03.573) - MainThread (8752):
+    Speaking ['任务', '子菜单', 'Alt+任', CancellableSpeech (still valid)]
+  toggle command pressed, filter ON:
+    IO - speech.speech.speak (11:08:28.421) - MainThread (8752):
+    Speaking ['已隐藏无法键入的菜单访问键']
+  filter ON, plugin debug line and speech:
+    DEBUG - external:globalPlugins.menuAccessKeyFilter.MenuShortcutOverlay._get_keyboardShortcut (11:08:29.668) - MainThread (8752):
+    Removed unusable access key(s) ['Alt+任'] from shortcut 'Alt+任' of <Role.MENUITEM: 11> named '任务'
+    IO - speech.speech.speak (11:08:29.669) - MainThread (8752):
+    Speaking ['任务', '子菜单', CancellableSpeech (still valid)]
+
+Bookworm 2026.2, Chinese UI, File menu, item 打开...
+  filter ON, plugin debug line and speech:
+    DEBUG - external:globalPlugins.menuAccessKeyFilter.MenuShortcutOverlay._get_keyboardShortcut (11:08:45.756) - MainThread (8752):
+    Removed unusable access key(s) ['打'] from shortcut '打' of <Role.MENUITEM: 11> named '打开... \tCtrl-O'
+    IO - speech.speech.speak (11:08:45.756) - MainThread (8752):
+    Speaking ['打开... \tCtrl-O', '，19 之 1 项', CancellableSpeech (still valid)]
+  toggle command pressed, filter OFF:
+    IO - speech.speech.speak (11:08:59.877) - MainThread (8752):
+    Speaking ['将朗读无法键入的菜单访问键']
+  filter OFF, speech:
+    IO - speech.speech.speak (11:09:01.127) - MainThread (8752):
+    Speaking ['打开... \tCtrl-O', '打', '，19 之 1 项', CancellableSpeech (still valid)]
+  toggle command pressed, filter ON:
+    IO - speech.speech.speak (11:09:10.729) - MainThread (8752):
+    Speaking ['已隐藏无法键入的菜单访问键']
+  filter ON, plugin debug line and speech:
+    DEBUG - external:globalPlugins.menuAccessKeyFilter.MenuShortcutOverlay._get_keyboardShortcut (11:09:11.690) - MainThread (8752):
+    Removed unusable access key(s) ['打'] from shortcut '打' of <Role.MENUITEM: 11> named '打开... \tCtrl-O'
+    IO - speech.speech.speak (11:09:11.690) - MainThread (8752):
+    Speaking ['打开... \tCtrl-O', '，19 之 1 项', CancellableSpeech (still valid)]

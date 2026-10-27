@@ -46,7 +46,7 @@
 
 已验证：
 
-- 25 个单元测试通过，覆盖 issue 中的两个例子、18 类可键入的文字、10 类仅限输入法的文字和各种分隔符。
+- 27 个单元测试通过，覆盖 issue 中的两个例子、18 类可键入的文字、10 类仅限输入法的文字和各种分隔符。
 - 用真实的 Win32 菜单（PowerShell + `oleacc`）确认了 MSAA 实际返回的数据，issue 的现象在原生菜单上可以复现：
 
   | 菜单 | 名称 | `accKeyboardShortcut` |
@@ -62,8 +62,13 @@
   两点结论：没写 `&` 时，MSAA 会自己拿标签的第一个字符当访问键，这就是“没人指定也会读出汉字”的来源；
   弹出菜单项的加速键在**名称**里，不在快捷键属性里。所以 Bookworm 的 `打开... Ctrl+O 打` 是名称加快捷键拼出来的，
   过滤掉快捷键 `打` 后读作 `打开... Ctrl+O`，加速键不会受影响。
-- 在 Internet Download Manager 和 Bookworm（简体中文界面）里安装插件实测，朗读符合预期：
-  `任务 子菜单 Alt+任` 读作 `任务 子菜单`，`打开... Ctrl+O 打` 读作 `打开... Ctrl+O`。
+- 直接读取了 Internet Download Manager 6.43 和 Bookworm 2026.2（简体中文界面）真实菜单的 MSAA 对象，
+  完整数据在 `evidence/msaa-dump-*.txt`。例如 Bookworm 文件菜单里 `打开... <TAB>Ctrl-O` 的快捷键属性是 `打`，
+  IDM 菜单栏里 `任务` 的是 `Alt+任`；按 `名称(X)` 写法的项报告的是拉丁字母，如 `导入(I)` 是 `i`。
+- 在这两个软件里安装插件后，用 NVDA 2026.3rc1 的调试日志记录了过滤关闭和开启时的朗读，摘录在 `evidence/nvda-log-excerpt.txt`：
+  `任务 子菜单 Alt+任` 读作 `任务 子菜单`，`打开... Ctrl-O 打` 读作 `打开... Ctrl-O`。拉丁字母访问键如 `文件(F)` 的 `Alt+f` 仍然读出。
+- 汉字访问键用微软拼音输入法验证过，结果见 `evidence/ime-test-results.txt`：菜单激活后，`ren` 到达菜单的是原始字母 `r`，没有输入法组字，
+  和没有输入法时完全一样。但直接注入 Unicode 字符时，Windows 会匹配并触发汉字访问键，所以“按不出来”只对键盘输入法成立。
 - 通过阅读 NVDA 源码确认 `keyboardShortcut` 的生成（`NVDAObjects/UIA`、`NVDAObjects/IAccessible`）和消费
   （`speech/shortcutKeys.py`、`speech/speech.py`）位置。
 
@@ -71,8 +76,21 @@
 
 - 目前只有简体中文界面的 Internet Download Manager 和 Bookworm 做过真机测试，其他语言和应用还没有。
 - 单元测试里的接线测试用的是 NVDA 模块的替身，只能防止插件自身逻辑回归。
-- 没有运行 Bookworm 和 IDM 本身。上面用原生菜单复现了同样的数据，但真实应用的实现可能有差异。
-- 只测了 .NET 旧版 `MainMenu` / `ContextMenu` 创建的原生菜单，MFC、wx 等框架没有逐个测。
+- 输入法验证只测了微软拼音一种，用 `SendInput` 注入按键而不是物理键盘，菜单只测了原生 Win32 菜单。
+  语音输入、手写、屏幕键盘等其他输入方式可能把汉字送进活动菜单，没有测。
+- 平假名、片假名、谚文、注音符号：插件 0.1.0 按“同样靠输入法输入”类推一并处理，
+  **没有用对应的输入法在菜单激活时测试过，目前只是暂定。** NVDA 核心的修改计划先只处理汉字。
+- 菜单项的 NVDA+F1 开发者信息没有记录，对象信息来自 MSAA 转储和插件的调试日志。
+- IDM 只读到了菜单栏，没有读到弹出菜单；Bookworm 读到了前四个弹出菜单，其余四个没有打开成功。
+
+## 证据与测试工具
+
+- `evidence/`：上面提到的原始数据。MSAA 转储、原生菜单探测、输入法测试结果、NVDA 日志摘录。
+- `tools/msaaMenuDump.ps1`：读取一个应用菜单栏和弹出菜单的 MSAA 对象（名称、角色、状态、快捷键）。
+  用法：`powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File tools\msaaMenuDump.ps1 -ExePath "C:\...\app.exe" -OutFile dump.txt`。
+  它会启动应用，优先通过 MSAA 打开菜单，不行才用键盘，并且只在您确实没碰键盘鼠标时才发送按键。
+- `tools/menuMnemonicTest.ps1`：带有汉字、假名、谚文、注音符号和拉丁字母访问键的测试窗口，记录菜单激活时窗口收到的字符。
+  手动用法见脚本开头的注释；`-Auto` 注入 Unicode 字符，`-AutoIme` 用输入法输入拼音（需要安装微软拼音，运行期间不要碰键盘）。
 - 只覆盖菜单相关角色。按钮、标签页等控件上的同类访问键不处理。
 
 ## 构建、安装、测试

@@ -1,0 +1,34 @@
+﻿Application: IDMan  version=6, 43, 16, 3  pid=1756  startedByScript=True
+Main window: class=[#32770]  title=[Internet Download Manager 6.43]
+== menu bar (OBJID_MENU) (accChildCount=6)
+  1: name=[任务]  accKeyboardShortcut=[Alt+任]  role=MENUITEM  state=0x40100000 HASPOPUP
+  2: name=[文件]  accKeyboardShortcut=[Alt+文]  role=MENUITEM  state=0x40100000 HASPOPUP
+  3: name=[下载]  accKeyboardShortcut=[Alt+下]  role=MENUITEM  state=0x40100000 HASPOPUP
+  4: name=[查看]  accKeyboardShortcut=[Alt+查]  role=MENUITEM  state=0x40100000 HASPOPUP
+  5: name=[帮助]  accKeyboardShortcut=[Alt+帮]  role=MENUITEM  state=0x40100000 HASPOPUP
+  6: name=[注册]  accKeyboardShortcut=[Alt+注]  role=MENUITEM  state=0x40100000 HASPOPUP
+== menu 1 via accChild (accChildCount=1)
+  1: name=[任务]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 2 via accChild (accChildCount=1)
+  1: name=[文件]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 3 via accChild (accChildCount=1)
+  1: name=[下载]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 4 via accChild (accChildCount=1)
+  1: name=[查看]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 5 via accChild (accChildCount=1)
+  1: name=[帮助]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 6 via accChild (accChildCount=1)
+  1: name=[注册]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 1: accDoDefaultAction opened no popup window
+== menu 2: accDoDefaultAction opened no popup window
+== menu 3: accDoDefaultAction opened no popup window
+== menu 4: accDoDefaultAction opened no popup window
+== menu 5: accDoDefaultAction opened no popup window
+== menu 6: accDoDefaultAction opened no popup window
+== menu 1: no popup window found with the keyboard either
+== menu 2: no popup window found with the keyboard either
+== menu 3: no popup window found with the keyboard either
+== menu 4: no popup window found with the keyboard either
+== menu 5: no popup window found with the keyboard either
+== menu 6: no popup window found with the keyboard either
+Closed the application the script had started.

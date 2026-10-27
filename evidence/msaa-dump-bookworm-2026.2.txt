@@ -1,0 +1,77 @@
+﻿Application: Bookworm  version=2026.2  pid=4572  startedByScript=True
+Main window: class=[wxWindowNR]  title=[Bookworm]
+== menu bar (OBJID_MENU) (accChildCount=8)
+  1: name=[文件(F)]  accKeyboardShortcut=[Alt+f]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  2: name=[搜索(R)]  accKeyboardShortcut=[Alt+r]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  3: name=[文档(D)]  accKeyboardShortcut=[Alt+d]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  4: name=[朗读(S)]  accKeyboardShortcut=[Alt+s]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  5: name=[注解(A)]  accKeyboardShortcut=[Alt+a]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  6: name=[OCR]  accKeyboardShortcut=[Alt+o]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  7: name=[Web 服务(W)]  accKeyboardShortcut=[Alt+w]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+  8: name=[帮助(H)]  accKeyboardShortcut=[Alt+h]  role=MENUITEM  state=0x40100000 HASPOPUP  defaultAction=[打开]
+== menu 1 via accChild (accChildCount=1)
+  1: name=[文件(F)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 2 via accChild (accChildCount=1)
+  1: name=[搜索(R)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 3 via accChild (accChildCount=1)
+  1: name=[文档(D)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 4 via accChild (accChildCount=1)
+  1: name=[朗读(S)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 5 via accChild (accChildCount=1)
+  1: name=[注解(A)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 6 via accChild (accChildCount=1)
+  1: name=[OCR]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 7 via accChild (accChildCount=1)
+  1: name=[Web 服务(W)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 8 via accChild (accChildCount=1)
+  1: name=[帮助(H)]  accKeyboardShortcut=(null)  role=MENUPOPUP  state=0x8000 INVISIBLE
+== menu 1 popup via accDoDefaultAction (window class [#32768]) (accChildCount=19)
+  1: name=[打开... <TAB>Ctrl-O]  accKeyboardShortcut=[打]  role=MENUITEM  state=0x84 FOCUSED|HOTTRACKED  defaultAction=[执行]
+  2: name=[新窗口...<TAB>Ctrl-N]  accKeyboardShortcut=[新]  role=MENUITEM  state=0x0  defaultAction=[执行]
+  3: SEPARATOR
+  4: name=[导入(I)]  accKeyboardShortcut=[i]  role=MENUITEM  state=0x40000000 HASPOPUP  defaultAction=[打开]
+  5: SEPARATOR
+  6: name=[固定(P)<TAB>Ctrl-P]  accKeyboardShortcut=[p]  role=MENUITEM  state=0x1 UNAVAILABLE
+  7: name=[书架(K)]  accKeyboardShortcut=[k]  role=MENUITEM  state=0x40000000 HASPOPUP  defaultAction=[打开]
+  8: name=[另存为纯文本(S)...]  accKeyboardShortcut=[s]  role=MENUITEM  state=0x1 UNAVAILABLE
+  9: SEPARATOR
+  10: name=[关闭当前文档(C)<TAB>Ctrl-W]  accKeyboardShortcut=[c]  role=MENUITEM  state=0x1 UNAVAILABLE
+  11: SEPARATOR
+  12: name=[清除文档缓存(L)...]  accKeyboardShortcut=[l]  role=MENUITEM  state=0x0  defaultAction=[执行]
+  13: SEPARATOR
+  14: name=[固定的文档(N)]  accKeyboardShortcut=[n]  role=MENUITEM  state=0x40000000 HASPOPUP  defaultAction=[打开]
+  15: name=[最近打开的文档(D)]  accKeyboardShortcut=[d]  role=MENUITEM  state=0x40000000 HASPOPUP  defaultAction=[打开]
+  16: SEPARATOR
+  17: name=[首选项(P)... <TAB>Ctrl-Shift-P]  accKeyboardShortcut=[p]  role=MENUITEM  state=0x0  defaultAction=[执行]
+  18: SEPARATOR
+  19: name=[退出(E)]  accKeyboardShortcut=[e]  role=MENUITEM  state=0x0  defaultAction=[执行]
+== menu 2 popup via accDoDefaultAction (window class [#32768]) (accChildCount=6)
+  1: name=[在文档中查找(F)...<TAB>Ctrl-F]  accKeyboardShortcut=[f]  role=MENUITEM  state=0x85 UNAVAILABLE|FOCUSED|HOTTRACKED
+  2: name=[查找下一个(N)<TAB>F3]  accKeyboardShortcut=[n]  role=MENUITEM  state=0x1 UNAVAILABLE
+  3: name=[查找上一个(P)<TAB>Shift-F3]  accKeyboardShortcut=[p]  role=MENUITEM  state=0x1 UNAVAILABLE
+  4: name=[行跳转(G)<TAB>Ctrl-L]  accKeyboardShortcut=[g]  role=MENUITEM  state=0x1 UNAVAILABLE
+  5: name=[页码跳转(G)...<TAB>Ctrl-G]  accKeyboardShortcut=[g]  role=MENUITEM  state=0x1 UNAVAILABLE
+  6: name=[标签跳转(G)...<TAB>Ctrl-Shift-G]  accKeyboardShortcut=[g]  role=MENUITEM  state=0x1 UNAVAILABLE
+== menu 3 popup via accDoDefaultAction (window class [#32768]) (accChildCount=5)
+  1: name=[文档信息(I)...]  accKeyboardShortcut=[i]  role=MENUITEM  state=0x85 UNAVAILABLE|FOCUSED|HOTTRACKED
+  2: name=[元素列表(E)...<TAB>Ctrl+F7]  accKeyboardShortcut=[e]  role=MENUITEM  state=0x1 UNAVAILABLE
+  3: name=[更改阅读模式(M)...<TAB>Ctrl-Shift-M]  accKeyboardShortcut=[m]  role=MENUITEM  state=0x1 UNAVAILABLE
+  4: name=[渲染页面(R)...<TAB>Ctrl-R]  accKeyboardShortcut=[r]  role=MENUITEM  state=0x1 UNAVAILABLE
+  5: name=[在 Web 查看器中打开(W)]  accKeyboardShortcut=[w]  role=MENUITEM  state=0x1 UNAVAILABLE
+== menu 4 popup via accDoDefaultAction (window class [#32768]) (accChildCount=7)
+  1: name=[朗读(P)<TAB>F5]  accKeyboardShortcut=[p]  role=MENUITEM  state=0x85 UNAVAILABLE|FOCUSED|HOTTRACKED
+  2: name=[暂停/恢复(U)<TAB>F6]  accKeyboardShortcut=[u]  role=MENUITEM  state=0x1 UNAVAILABLE
+  3: name=[停止(S)<TAB>F7]  accKeyboardShortcut=[s]  role=MENUITEM  state=0x1 UNAVAILABLE
+  4: name=[快退(R)<TAB>Alt-LeftArrow]  accKeyboardShortcut=[r]  role=MENUITEM  state=0x1 UNAVAILABLE
+  5: name=[快进(F)<TAB>Alt-RightArrow]  accKeyboardShortcut=[f]  role=MENUITEM  state=0x1 UNAVAILABLE
+  6: name=[语音配置文件(V)<TAB>Ctrl-Shift-V]  accKeyboardShortcut=[v]  role=MENUITEM  state=0x0  defaultAction=[执行]
+  7: name=[停用当前语音配置文件(D)]  accKeyboardShortcut=[d]  role=MENUITEM  state=0x1 UNAVAILABLE
+== menu 5: accDoDefaultAction opened no popup window
+== menu 6: accDoDefaultAction opened no popup window
+== menu 7: accDoDefaultAction opened no popup window
+== menu 8: accDoDefaultAction opened no popup window
+== menu 5: no popup window found with the keyboard either
+== menu 6: no popup window found with the keyboard either
+== menu 7: no popup window found with the keyboard either
+== menu 8: no popup window found with the keyboard either
+Closed the application the script had started.

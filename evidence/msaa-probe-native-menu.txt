@@ -1,0 +1,24 @@
+MSAA values returned by oleacc for native Win32 menus built with the legacy .NET MainMenu / ContextMenu (Windows 11, 10.0.26300).
+Captured with PowerShell + IAccessible (AccessibleObjectFromWindow, OBJID_MENU for the menu bar, OBJID_CLIENT of the #32768 window for popups).
+
+== Menu bar
+child 1  name=[任务]       accKeyboardShortcut=[Alt+任]   (label written "&任务")
+child 2  name=[文件(F)]    accKeyboardShortcut=[Alt+f]    (label written "文件(&F)")
+child 3  name=[无助记符]   accKeyboardShortcut=[Alt+无]   (no ampersand)
+child 4  name=[Plain]      accKeyboardShortcut=[Alt+p]    (no ampersand)
+child 5  name=[Tools]      accKeyboardShortcut=[Alt+t]    (label written "&Tools")
+child 6  name=[ヘルプ]     accKeyboardShortcut=[]         (no ampersand; another item "&ヘルプ2" has the mnemonic ヘ, so no key was assigned)
+child 7  name=[ひらがな]   accKeyboardShortcut=[Alt+ひ]   (no ampersand, Hiragana)
+child 8  name=[파일]       accKeyboardShortcut=[Alt+파]   (no ampersand, Hangul)
+child 9  name=[ㄅㄆㄇ]     accKeyboardShortcut=[Alt+ㄅ]   (no ampersand, Bopomofo)
+child 10 name=[ヘルプ2]    accKeyboardShortcut=[Alt+ヘ]   (label written "&ヘルプ2", Katakana)
+
+== Popup menu (ContextMenu), accelerators set with Shortcut = CtrlO / CtrlS / CtrlE
+child 1  name=[打开...<TAB>Ctrl+O]   accKeyboardShortcut=[打]   (label written "&打开...")
+child 2  name=[保存<TAB>Ctrl+S]      accKeyboardShortcut=[保]   (no ampersand)
+child 3  name=[导出(E)<TAB>Ctrl+E]   accKeyboardShortcut=[e]    (label written "导出(&E)")
+
+Reading:
+- When an item has no ampersand, MSAA reports the first character of the label as its access key, in Han, Hiragana,
+  Hangul and Bopomofo as well as in Latin.
+- For popup items the accelerator text is part of the accessible name, after a tab. accKeyboardShortcut only holds the access key.
